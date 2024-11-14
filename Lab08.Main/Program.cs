@@ -2,18 +2,10 @@
 using Lab08;
 
 FountainRoom fountainRoom = new FountainRoom(0, 0);
-// Pit pit1 = new Pit(-5, -5);
-// Pit pit2 = new Pit(-5, -5);
-// Pit pit3 = new Pit(-5, -5);
-// Pit pit4 = new Pit(-5, -5);
-// Maelstrom maelstrom1 = new Maelstrom(-5, -5);
-// Maelstrom maelstrom2 = new Maelstrom(-5, -5);
-// Amarok amarok1 = new Amarok(-5, -5);
-// Amarok amarok2 = new Amarok(-5, -5);
-// Amarok amarok3 = new Amarok(-5, -5);
 string sizeInput = getValidSizeInput();
 Room[,] Maze = populateMaze(sizeInput);
 Monster[,] monsters = populateMonsters(sizeInput);
+Inventory PlayerInventory = new Inventory(new Fist(), new Potion());
 
 string getValidSizeInput()
 {
@@ -27,42 +19,20 @@ string getValidSizeInput()
 }
 
 bool fountainOn = false;
-Player player = new Player(0, 0, 5);
+Player player = new Player(0, 0, PlayerInventory);
 while (true)
 {
     Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("You are in the room at  (Column=" + player.x + " Row=" + player.y + " Arrows=" + player.arrows + " ).");
+    Console.WriteLine("You are in the room at  (Column=" + player.x + " Row=" + player.y + " Health=" + player.health + ").");
     Maze[player.x, player.y].Information(fountainOn);
 
-    if (monsters[player.x, player.y] != null)
-    {
-        if (monsters[player.x, player.y].x == player.x && monsters[player.x, player.y].y == player.y)
-            monsters[player.x, player.y].Information(player, Maze);
-    }
-
-
-    // if (maelstrom1.x == player.x && maelstrom1.y == player.y)
-    //     maelstrom1.Information(player, Maze);
-    // if (maelstrom2.x == player.x && maelstrom2.y == player.y)
-    //     maelstrom2.Information(player, Maze);
-
-    // if (amarok1.x == player.x && amarok1.y == player.y)
-    //     amarok1.Information(player, Maze);
-    // if (amarok2.x == player.x && amarok2.y == player.y)
-    //     amarok2.Information(player, Maze);
-    // if (amarok3.x == player.x && amarok3.y == player.y)
-    //     amarok3.Information(player, Maze);
-
-    checkForPits();
-    checkForMaelstrom();
-    checkForAmarock();
+    checkForMonsters();
 
     Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine("What do you want to do?");
 
     Console.ForegroundColor = ConsoleColor.Cyan;
     string action = Console.ReadLine();
-
     switch (action)
     {
         case "move north":
@@ -81,18 +51,6 @@ while (true)
             if (player.x >= 0 && player.x < Maze.GetLength(0) - 1)
                 player.MoveEast();
             break;
-        // case "shoot north":
-        //     player.shootNorth(ref maelstrom1, ref maelstrom2, ref amarok1, ref amarok2, ref amarok3);
-        //     break;
-        // case "shoot south":
-        //     player.shootSouth(ref maelstrom1, ref maelstrom2, ref amarok1, ref amarok2, ref amarok3);
-        //     break;
-        // case "shoot east":
-        //     player.shootEast(ref maelstrom1, ref maelstrom2, ref amarok1, ref amarok2, ref amarok3);
-        //     break;
-        // case "shoot west":
-        //     player.shootWest(ref maelstrom1, ref maelstrom2, ref amarok1, ref amarok2, ref amarok3);
-        //     break;
         case "enable fountain":
             if (player.y == fountainRoom.y && player.x == fountainRoom.x)
             {
@@ -110,37 +68,22 @@ while (true)
             Console.WriteLine("Invalid input. Try again.");
             break;
     }
+    if (monsters[player.x, player.y] != null)
+    {
+        monsters[player.x, player.y].AttackDialog(player, Maze, monsters);
+    }
 }
 
-void checkForPits()
+void checkForMonsters()
 {
     Console.ForegroundColor = ConsoleColor.DarkRed;
-    // if ((player.y - 1 == pit1.y || player.y == pit1.y || player.y + 1 == pit1.y) && (player.x - 1 == pit1.x || player.x == pit1.x || player.x + 1 == pit1.x) ||
-    // (player.y - 1 == pit2.y || player.y == pit2.y || player.y + 1 == pit2.y) && (player.x - 1 == pit2.x || player.x == pit2.x || player.x + 1 == pit2.x) ||
-    // (player.y - 1 == pit3.y || player.y == pit3.y || player.y + 1 == pit3.y) && (player.x - 1 == pit3.x || player.x == pit3.x || player.x + 1 == pit3.x) ||
-    // (player.y - 1 == pit4.y || player.y == pit4.y || player.y + 1 == pit4.y) && (player.x - 1 == pit4.x || player.x == pit4.x || player.x + 1 == pit4.x))
-    // {
-    //     Console.WriteLine("You feel a draft. There is a pit in a nearby room.");
-    // }
-}
-void checkForMaelstrom()
-{
-    Console.ForegroundColor = ConsoleColor.DarkRed;
-    // if ((player.y - 1 == maelstrom1.y || player.y == maelstrom1.y || player.y + 1 == maelstrom1.y) && (player.x - 1 == maelstrom1.x || player.x == maelstrom1.x || player.x + 1 == maelstrom1.x) ||
-    // (player.y - 1 == maelstrom2.y || player.y == maelstrom2.y || player.y + 1 == maelstrom2.y) && (player.x - 1 == maelstrom2.x || player.x == maelstrom2.x || player.x + 1 == maelstrom2.x))
-    // {
-    //     Console.WriteLine("You can hear the growling and groaning of a maelstrom nearby.");
-    // }
-}
-void checkForAmarock()
-{
-    Console.ForegroundColor = ConsoleColor.DarkRed;
-    // if ((player.y - 1 == amarok1.y || player.y == amarok1.y || player.y + 1 == amarok1.y) && (player.x - 1 == amarok1.x || player.x == amarok1.x || player.x + 1 == amarok1.x) ||
-    // (player.y - 1 == amarok2.y || player.y == amarok2.y || player.y + 1 == amarok2.y) && (player.x - 1 == amarok2.x || player.x == amarok2.x || player.x + 1 == amarok2.x) ||
-    // (player.y - 1 == amarok3.y || player.y == amarok3.y || player.y + 1 == amarok3.y) && (player.x - 1 == amarok3.x || player.x == amarok3.x || player.x + 1 == amarok3.x))
-    // {
-    //     Console.WriteLine("You can smell the rotten stench of an amarok in a nearby room.");
-    // }
+
+    for (int x = player.x - 1; x <= player.x + 1; x++)
+        for (int y = player.y - 1; y <= player.y + 1; y++)
+            if (!(x < 0 || y < 0 || x > Maze.GetLength(0)-1 || y > Maze.GetLength(1)-1) && monsters[x,y] != null)
+            {
+                monsters[x,y].Information();
+            }
 }
 
 Room[,] populateMaze(string size)
@@ -175,39 +118,16 @@ Room[,] populateMaze(string size)
     {
         case "small":
             Maze[0, 2] = new FountainRoom(0, 2);
-            // Maze[2, 3] = new Pit(2, 3);
-            // maelstrom1 = new Maelstrom(1, 1);
-            // fountainRoom = new FountainRoom(0, 2);
-            // amarok1 = new Amarok(1, 2);
-            // pit1 = new Pit(2, 3);
+            fountainRoom = new FountainRoom(0, 2);
             break;
         case "medium":
             Maze[0, 4] = new FountainRoom(0, 4);
-            // Maze[2, 4] = new Pit(2, 4);
-            // Maze[3, 5] = new Pit(3, 5);
-            // maelstrom1 = new Maelstrom(1, 1);
-            // fountainRoom = new FountainRoom(0, 4);
-            // amarok1 = new Amarok(1, 2);
-            // amarok2 = new Amarok(4, 0);
-            // pit1 = new Pit(2, 4);
-            // pit2 = new Pit(3, 5);
+
+            fountainRoom = new FountainRoom(0, 4);
             break;
         case "large":
             Maze[0, 6] = new FountainRoom(0, 6);
-            // Maze[2, 4] = new Pit(2, 4);
-            // Maze[3, 7] = new Pit(3, 7);
-            // Maze[0, 3] = new Pit(0, 3);
-            // Maze[6, 2] = new Pit(6, 2);
-            // maelstrom1 = new Maelstrom(1, 1);
-            // maelstrom2 = new Maelstrom(1, 6);
-            // fountainRoom = new FountainRoom(0, 6);
-            // amarok1 = new Amarok(1, 2);
-            // amarok2 = new Amarok(4, 0);
-            // amarok3 = new Amarok(5, 6);
-            // pit1 = new Pit(2, 4);
-            // pit2 = new Pit(3, 7);
-            // pit3 = new Pit(0, 3);
-            // pit4 = new Pit(6, 2);
+            fountainRoom = new FountainRoom(0, 6);
             break;
         default:
             break;
@@ -217,6 +137,9 @@ Room[,] populateMaze(string size)
 
 Monster[,] populateMonsters(string size)
 {
+    Inventory GoonerInventory = new Inventory(new Sword(), new Potion());
+    Inventory MaelstromInventory = new Inventory(new Fist(), new Potion());
+    Inventory AmarokInventory = new Inventory(new Sword(), new Potion(), new Potion());
     int height = 0;
     int width = 0;
     switch (size)
@@ -238,23 +161,21 @@ Monster[,] populateMonsters(string size)
     }
 
     Monster[,] monsters = new Monster[height, width];
-    Random AmarokChance = new Random();
-    Random MaelstromChance = new Random();
-    Random GoonerChance = new Random();
+    Random MonsterChance = new Random();
     for (int y = 1; y < height; y++)
         for (int x = 1; x < width; x++)
         {
-            if (GoonerChance.Next(8) == 0)
+            if (MonsterChance.Next(6) == 0)
             {
-                monsters[y, x] = new Gooner(x, y);
+                monsters[y, x] = new Gooner(x, y, GoonerInventory);
             }
-            else if (MaelstromChance.Next(8) == 0)
+            else if (MonsterChance.Next(6) == 0)
             {
-                monsters[y, x] = new Maelstrom(x, y);
+                monsters[y, x] = new Maelstrom(x, y, MaelstromInventory);
             }
-            else if (AmarokChance.Next(8) == 0)
+            else if (MonsterChance.Next(6) == 0)
             {
-                monsters[y, x] = new Amarok(x, y);
+                monsters[y, x] = new Amarok(x, y, AmarokInventory);
             }
         }
     return monsters;

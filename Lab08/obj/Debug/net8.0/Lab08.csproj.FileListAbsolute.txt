@@ -1,0 +1,12 @@
+C:\Users\jazzy\OneDrive\Desktop\Programming\Lab 8 Fountain of Objects 2\lab-8-fountain-of-objects-2-Jazzypanda1234\Lab08\bin\Debug\net8.0\Lab08.deps.json
+C:\Users\jazzy\OneDrive\Desktop\Programming\Lab 8 Fountain of Objects 2\lab-8-fountain-of-objects-2-Jazzypanda1234\Lab08\bin\Debug\net8.0\Lab08.dll
+C:\Users\jazzy\OneDrive\Desktop\Programming\Lab 8 Fountain of Objects 2\lab-8-fountain-of-objects-2-Jazzypanda1234\Lab08\bin\Debug\net8.0\Lab08.pdb
+C:\Users\jazzy\OneDrive\Desktop\Programming\Lab 8 Fountain of Objects 2\lab-8-fountain-of-objects-2-Jazzypanda1234\Lab08\obj\Debug\net8.0\Lab08.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jazzy\OneDrive\Desktop\Programming\Lab 8 Fountain of Objects 2\lab-8-fountain-of-objects-2-Jazzypanda1234\Lab08\obj\Debug\net8.0\Lab08.AssemblyInfoInputs.cache
+C:\Users\jazzy\OneDrive\Desktop\Programming\Lab 8 Fountain of Objects 2\lab-8-fountain-of-objects-2-Jazzypanda1234\Lab08\obj\Debug\net8.0\Lab08.AssemblyInfo.cs
+C:\Users\jazzy\OneDrive\Desktop\Programming\Lab 8 Fountain of Objects 2\lab-8-fountain-of-objects-2-Jazzypanda1234\Lab08\obj\Debug\net8.0\Lab08.csproj.CoreCompileInputs.cache
+C:\Users\jazzy\OneDrive\Desktop\Programming\Lab 8 Fountain of Objects 2\lab-8-fountain-of-objects-2-Jazzypanda1234\Lab08\obj\Debug\net8.0\Lab08.sourcelink.json
+C:\Users\jazzy\OneDrive\Desktop\Programming\Lab 8 Fountain of Objects 2\lab-8-fountain-of-objects-2-Jazzypanda1234\Lab08\obj\Debug\net8.0\Lab08.dll
+C:\Users\jazzy\OneDrive\Desktop\Programming\Lab 8 Fountain of Objects 2\lab-8-fountain-of-objects-2-Jazzypanda1234\Lab08\obj\Debug\net8.0\refint\Lab08.dll
+C:\Users\jazzy\OneDrive\Desktop\Programming\Lab 8 Fountain of Objects 2\lab-8-fountain-of-objects-2-Jazzypanda1234\Lab08\obj\Debug\net8.0\Lab08.pdb
+C:\Users\jazzy\OneDrive\Desktop\Programming\Lab 8 Fountain of Objects 2\lab-8-fountain-of-objects-2-Jazzypanda1234\Lab08\obj\Debug\net8.0\ref\Lab08.dll

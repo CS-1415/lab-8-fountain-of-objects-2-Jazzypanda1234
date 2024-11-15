@@ -48,9 +48,9 @@ public class Battle
                 case "attack":
                     Random attackRoll = new Random();
                     Random damageRoll = new Random();
-                    if (attackRoll.Next(20) + 1 <= monster.armorClass)
+                    if (attackRoll.Next(20) + 1 >= monster.armorClass)
                     {
-                        int damageDealt = damageRoll.Next(player.equippedItem.damageMax) + player.equippedItem.damageMin + 1;
+                        int damageDealt = damageRoll.Next(player.equippedItem.damageMin, player.equippedItem.damageMax);
                         monster.health -= damageDealt;
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("You have hit the enemy for " + damageDealt + " damage!");
@@ -97,9 +97,9 @@ public class Battle
     {
         Random attackRoll = new Random();
         Random damageRoll = new Random();
-        if (attackRoll.Next(20) + 1 <= player.armorClass)
+        if (attackRoll.Next(20) + 1 >= player.armorClass)
         {
-            int damageDealt = damageRoll.Next(monster.equippedItem.damageMax) + monster.equippedItem.damageMin + 1;
+            int damageDealt = damageRoll.Next(monster.equippedItem.damageMin, monster.equippedItem.damageMax);
             player.health -= damageDealt;
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("You have been hit for " + damageDealt + " damage!");

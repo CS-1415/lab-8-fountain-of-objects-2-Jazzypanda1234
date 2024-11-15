@@ -15,7 +15,7 @@ public class Player
         this.inventory = inventory;
         equippedItem = new Fist();
         health = 40;
-        armorClass = 12;
+        armorClass = 15;
     }
 
     public void MoveNorth()

@@ -65,7 +65,7 @@ public class Battle
                 case "drink potion":
                     if (player.inventory.CountPotions(player.inventory) > 0)
                     {
-                        player.health += 5;
+                        player.health += 8;
                         for (int i = 0; i < player.inventory.items.Count(); i++)
                         {
                             if (player.inventory.items[i].name == "potion")
@@ -74,7 +74,7 @@ public class Battle
                                 break;
                             }
                         }
-                        Console.WriteLine("You have gained 5 health. You are now at " + player.health + " health.");
+                        Console.WriteLine("You have gained 8 health. You are now at " + player.health + " health.");
                         loop = false;
                     }
                     else
@@ -88,7 +88,7 @@ public class Battle
                     Console.WriteLine("You are at " + player.health + " health.");
                     break;
                 case "check inventory":
-                    player.inventory.CheckInventory(player.inventory);
+                    player.inventory.CheckInventory(player.inventory, player);
                     break;
                 default:
                     Console.ForegroundColor = ConsoleColor.White;

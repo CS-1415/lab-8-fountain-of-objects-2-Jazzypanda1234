@@ -36,9 +36,10 @@ public class Inventory
         return potionCount;
     }
 
-    public void CheckInventory(Inventory inventory)
+    public void CheckInventory(Inventory inventory, Player player)
     {
         Console.WriteLine("Your inventory:");
+        Console.WriteLine("Equipped Item: " + player.equippedItem.name);
         for (int i = 0; i < inventory.items.Count(); i++)
             if (inventory.items[i].name != "fist")
                 Console.WriteLine(inventory.items[i].name);

@@ -20,6 +20,8 @@ string getValidSizeInput()
 
 bool fountainOn = false;
 Player player = new Player(0, 0, PlayerInventory);
+Console.ForegroundColor = ConsoleColor.Blue;
+Console.WriteLine("Your goal is to find the fountain, activate it, and escape.");
 while (true)
 {
     Console.ForegroundColor = ConsoleColor.White;
@@ -64,7 +66,7 @@ while (true)
             }
             break;
         case "check inventory":
-            player.inventory.CheckInventory(player.inventory);
+            player.inventory.CheckInventory(player.inventory, player);
             break;
         case "drink potion":
             if (player.inventory.CountPotions(player.inventory) > 0)
@@ -185,8 +187,8 @@ Monster[,] populateMonsters(string size)
 
     Monster[,] monsters = new Monster[height, width];
     Random MonsterChance = new Random();
-    for (int y = 1; y < height; y++)
-        for (int x = 1; x < width; x++)
+    for (int y = 0; y < height; y++)
+        for (int x = 0; x < width; x++)
         {
             if (MonsterChance.Next(6) == 0)
             {

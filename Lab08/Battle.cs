@@ -27,7 +27,7 @@ public class Battle
             {
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 Console.WriteLine("You have slain the monster");
-                player.inventory.items.Concat(monster[player.x, player.y].inventory.items);
+                player.inventory.items.AddRange(monster[player.x, player.y].inventory.items);
                 monster[player.x, player.y] = null;
                 break;
             }
@@ -40,7 +40,7 @@ public class Battle
         while (loop)
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("What would you like to do? (attack, drink potion, check health)");
+            Console.WriteLine("What would you like to do? (attack, drink potion, check health, check inventory)");
             Console.ForegroundColor = ConsoleColor.Cyan;
             string action = Console.ReadLine();
             switch (action)
@@ -74,6 +74,7 @@ public class Battle
                                 break;
                             }
                         }
+                        Console.WriteLine("You have gained 5 health. You are now at " + player.health + " health.");
                         loop = false;
                     }
                     else

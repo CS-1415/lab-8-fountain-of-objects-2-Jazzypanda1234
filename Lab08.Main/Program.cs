@@ -29,7 +29,7 @@ while (true)
     checkForMonsters();
 
     Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("What do you want to do? (move (north,east,south,west), enable fountain, check inventory)");
+    Console.WriteLine("What do you want to do? (move (north,east,south,west), enable fountain, check inventory, drink potion)");
 
     Console.ForegroundColor = ConsoleColor.Cyan;
     string action = Console.ReadLine();
@@ -66,6 +66,26 @@ while (true)
         case "check inventory":
             player.inventory.CheckInventory(player.inventory);
             break;
+        case "drink potion":
+            if (player.inventory.CountPotions(player.inventory) > 0)
+            {
+                player.health += 5;
+                for (int i = 0; i < player.inventory.items.Count(); i++)
+                {
+                    if (player.inventory.items[i].name == "potion")
+                    {
+                        player.inventory.items.Remove(player.inventory.items[i]);
+                        break;
+                    }
+                }
+                Console.WriteLine("You have gained 5 health. You are now at " + player.health + " health.");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("You are out of potions.");
+            }
+            break;
         default:
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Invalid input. Try again.");
@@ -83,9 +103,9 @@ void checkForMonsters()
 
     for (int x = player.x - 1; x <= player.x + 1; x++)
         for (int y = player.y - 1; y <= player.y + 1; y++)
-            if (!(x < 0 || y < 0 || x > Maze.GetLength(0)-1 || y > Maze.GetLength(1)-1) && monsters[x,y] != null)
+            if (!(x < 0 || y < 0 || x > Maze.GetLength(0) - 1 || y > Maze.GetLength(1) - 1) && monsters[x, y] != null)
             {
-                monsters[x,y].Information();
+                monsters[x, y].Information();
             }
 }
 
@@ -120,17 +140,17 @@ Room[,] populateMaze(string size)
     switch (size)
     {
         case "small":
-            Maze[0, 2] = new FountainRoom(0, 2);
-            fountainRoom = new FountainRoom(0, 2);
+            Maze[1, 2] = new FountainRoom(1, 2);
+            fountainRoom = new FountainRoom(1, 2);
             break;
         case "medium":
-            Maze[0, 4] = new FountainRoom(0, 4);
+            Maze[1, 4] = new FountainRoom(1, 4);
 
-            fountainRoom = new FountainRoom(0, 4);
+            fountainRoom = new FountainRoom(1, 4);
             break;
         case "large":
-            Maze[0, 6] = new FountainRoom(0, 6);
-            fountainRoom = new FountainRoom(0, 6);
+            Maze[2, 6] = new FountainRoom(2, 6);
+            fountainRoom = new FountainRoom(2, 6);
             break;
         default:
             break;

@@ -28,12 +28,19 @@ public class Inventory
         int potionCount = 0;
         for (int i = 0; i < inventory.items.Count(); i++)
         {
-            Console.WriteLine(inventory.items[i].name);
             if (inventory.items[i].name == "potion")
             {
                 potionCount++;
             }
         }
         return potionCount;
+    }
+
+    public void CheckInventory(Inventory inventory)
+    {
+        Console.WriteLine("Your inventory:");
+        for (int i = 0; i < inventory.items.Count(); i++)
+            if (inventory.items[i].name != "fist")
+                Console.WriteLine(inventory.items[i].name);
     }
 }

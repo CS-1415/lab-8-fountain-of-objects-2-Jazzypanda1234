@@ -29,7 +29,7 @@ while (true)
     checkForMonsters();
 
     Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("What do you want to do?");
+    Console.WriteLine("What do you want to do? (move (north,east,south,west), enable fountain, check inventory)");
 
     Console.ForegroundColor = ConsoleColor.Cyan;
     string action = Console.ReadLine();
@@ -62,6 +62,9 @@ while (true)
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("You are not in the fountain room");
             }
+            break;
+        case "check inventory":
+            player.inventory.CheckInventory(player.inventory);
             break;
         default:
             Console.ForegroundColor = ConsoleColor.White;

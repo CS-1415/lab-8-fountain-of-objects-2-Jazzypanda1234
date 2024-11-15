@@ -86,6 +86,9 @@ public class Battle
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("You are at " + player.health + " health.");
                     break;
+                case "check inventory":
+                    player.inventory.CheckInventory(player.inventory);
+                    break;
                 default:
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Invalid input. Try again.");

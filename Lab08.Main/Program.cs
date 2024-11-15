@@ -139,20 +139,28 @@ Room[,] populateMaze(string size)
             Maze[y, x] = new Room(x, y);
 
     Maze[0, 0] = new Entrance(0, 0);
+    Random random = new Random();
+    int x;
+    int y;
     switch (size)
     {
         case "small":
-            Maze[1, 2] = new FountainRoom(1, 2);
-            fountainRoom = new FountainRoom(1, 2);
+            x = random.Next(3);
+            y = random.Next(3);
+            Maze[x, y] = new FountainRoom(x, y);
+            fountainRoom = new FountainRoom(x, y);
             break;
         case "medium":
-            Maze[1, 4] = new FountainRoom(1, 4);
-
-            fountainRoom = new FountainRoom(1, 4);
+            x = random.Next(5);
+            y = random.Next(5);
+            Maze[x, y] = new FountainRoom(x, y);
+            fountainRoom = new FountainRoom(x, y);
             break;
         case "large":
-            Maze[2, 6] = new FountainRoom(2, 6);
-            fountainRoom = new FountainRoom(2, 6);
+            x = random.Next(7);
+            y = random.Next(7);
+            Maze[x, y] = new FountainRoom(x, y);
+            fountainRoom = new FountainRoom(x, y);
             break;
         default:
             break;
